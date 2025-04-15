@@ -8,9 +8,13 @@ public class GoalZone : MonoBehaviour
     {
         if (collision.CompareTag("Ball"))
         {
-            Debug.Log(isLeftGoal ? "Right Player Scores!" : "Left Player Scores!");
+            // 🧮 Update the score
+            if (isLeftGoal)
+                ScoreManager.Instance.Player2Scored(); // Right player scores
+            else
+                ScoreManager.Instance.Player1Scored(); // Left player scores
 
-            // Reset ball position
+            // Reset ball
             collision.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             collision.transform.position = Vector2.zero;
 
